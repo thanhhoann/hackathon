@@ -20,9 +20,8 @@ const Search = () => {
 	}, [guestCount]);
 
 	return (
-		<Suspense>
-			<div
-				className="
+		<div
+			className="
       border-[1px] 
       w-full 
       md:w-auto 
@@ -33,17 +32,17 @@ const Search = () => {
       transition 
       cursor-pointer
     "
-			>
-				<div
-					className="
+		>
+			<div
+				className="
         flex 
         flex-row 
         items-center 
         justify-between
       "
-				>
-					<div
-						className="
+			>
+				<div
+					className="
           text-sm 
           pl-6 
           pr-2 
@@ -54,20 +53,19 @@ const Search = () => {
           gap-6
           
         "
-					>
-						<div className="hidden sm:block">{guestLabel}</div>
-						<div
-							className="
+				>
+					<div className="hidden sm:block">{guestLabel}</div>
+					<div
+						className="
             p-2 
             bg-black 
             rounded-full 
             text-black
           "
-						/>
-					</div>
+					/>
 				</div>
 			</div>
-		</Suspense>
+		</div>
 	);
 };
 export default Search;
