@@ -1,27 +1,28 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { useMemo } from "react";
+import { Suspense, useMemo } from "react";
 
 const Search = () => {
-  const params = useSearchParams();
+	const params = useSearchParams();
 
-  const locationValue = params?.get("locationValue");
-  const startDate = params?.get("startDate");
-  const endDate = params?.get("endDate");
-  const guestCount = params?.get("guestCount");
+	const locationValue = params?.get("locationValue");
+	const startDate = params?.get("startDate");
+	const endDate = params?.get("endDate");
+	const guestCount = params?.get("guestCount");
 
-  const guestLabel = useMemo(() => {
-    if (guestCount) {
-      return `${guestCount} Guests`;
-    }
+	const guestLabel = useMemo(() => {
+		if (guestCount) {
+			return `${guestCount} Guests`;
+		}
 
-    return "🔎 Searching anything here...";
-  }, [guestCount]);
+		return "🔎 Searching anything here...";
+	}, [guestCount]);
 
-  return (
-    <div
-      className="
+	return (
+		<Suspense>
+			<div
+				className="
       border-[1px] 
       w-full 
       md:w-auto 
@@ -32,17 +33,17 @@ const Search = () => {
       transition 
       cursor-pointer
     "
-    >
-      <div
-        className="
+			>
+				<div
+					className="
         flex 
         flex-row 
         items-center 
         justify-between
       "
-      >
-        <div
-          className="
+				>
+					<div
+						className="
           text-sm 
           pl-6 
           pr-2 
@@ -53,19 +54,20 @@ const Search = () => {
           gap-6
           
         "
-        >
-          <div className="hidden sm:block">{guestLabel}</div>
-          <div
-            className="
+					>
+						<div className="hidden sm:block">{guestLabel}</div>
+						<div
+							className="
             p-2 
             bg-black 
             rounded-full 
             text-black
           "
-          ></div>
-        </div>
-      </div>
-    </div>
-  );
+						/>
+					</div>
+				</div>
+			</div>
+		</Suspense>
+	);
 };
 export default Search;
